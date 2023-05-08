@@ -1,135 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Try design 7</title>
-    <style>
-        .carousel-container {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-}
-
-.carousel-slide {
-  display: flex;
-  width: 100%;
-  transition: transform 0.5s ease;
-}
-
-.carousel-slide img {
-  width: 100%;
-  height: auto;
-}
-
-.carousel-dots {
-  display: flex;
-  justify-content: center;
-  margin-top: 10px; 
-}
-
-.dot {
-  width: 10px;
-  height: 10px;
-  margin: 0 5px;
-  border-radius: 50%;
-  background-color: #bbb;
-  cursor: pointer;
-}
-
-.active {
-  background-color: #333;
-}
-
-.carousel-prev,
-.carousel-next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 30px;
-  font-weight: bold;
-  color: #fff;
-  text-decoration: none;
-  z-index: 2;
-  cursor: pointer;
-}
-
-.carousel-prev {
-  left: 0;
-}
-
-.carousel-next {
-  right: 0;
-}
-
-    </style>
-</head>
-<body>
-    <div class="carousel-container">
-        <div class="carousel-slide">
-          <img src="pic2.jpg">
-          <img src="pic3.jpg">
-          <img src="pic4.jpg">
-          <img src="pic5.jpg">
-        </div>
-        <div class="carousel-dots">
-          <span class="dot active"></span>
-          <span class="dot"></span>
-          <span class="dot"></span>
-          <span class="dot"></span>
-        </div>
-        <a class="carousel-prev">&#10094;</a>
-        <a class="carousel-next">&#10095;</a>
-      </div>
-      <script>
-        const carouselSlide = document.querySelector('.carousel-slide');
-const carouselImages = document.querySelectorAll('.carousel-slide img');
-const carouselPrev = document.querySelector('.carousel-prev');
-const carouselNext = document.querySelector('.carousel-next');
-const carouselDots = document.querySelectorAll('.dot');
-
-let counter = 0;
-const width = carouselImages[0].clientWidth;
-
-carouselSlide.style.transform = 'translateX(' + (-width * counter) + 'px)';
-
-carouselNext.addEventListener('click', () => {
-  if (counter >= carouselImages.length - 1) return;
-  carouselSlide.style.transition = "transform 0.5s ease";
-  counter++;
-  carouselSlide.style.transform = 'translateX(' + (-width * counter) + 'px)';
-  setActiveDot();
-});
-
-carouselPrev.addEventListener('click', () => {
-  if (counter <= 0) return;
-  carouselSlide.style.transition = "transform 0.5s ease";
-  counter--;
-  carouselSlide.style.transform = 'translateX(' + (-width * counter) + 'px)';
-  setActiveDot();
-});
-
-carouselDots.forEach((dot, index) => {
-  dot.addEventListener('click', () => {
-    carouselSlide.style.transition = "transform 0.5s ease";
-    counter = index;
-    carouselSlide.style.transform = 'translateX(' + (-width * counter) + 'px)';
-    setActiveDot();
-  });
-});
-
-function setActiveDot() {
-  carouselDots.forEach((dot, index) => {
-    if (index === counter) {
-      dot.classList.add('active');
-    } else {
-      dot.classList.remove('active');
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Try design 7</title>
+  <style>
+    .carousel-container {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
     }
-  });
-}
 
-      </script>
+    .carousel-slide {
+      display: flex;
+      width: 100%;
+      transition: transform 0.5s ease;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: auto;
+    }
+
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      margin: 0 5px;
+      border-radius: 50%;
+      background-color: #bbb;
+      cursor: pointer;
+    }
+
+    .active {
+      background-color: #333;
+    }
+
+    .carousel-prev,
+    .carousel-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 30px;
+      font-weight: bold;
+      color: #fff;
+      text-decoration: none;
+      z-index: 2;
+      cursor: pointer;
+    }
+
+    .carousel-prev {
+      left: 0;
+    }
+
+    .carousel-next {
+      right: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="carousel-container">
+    <div class="carousel-slide">
+      <img src="pic2.jpg">
+      <img src="pic3.jpg">
+      <img src="pic4.jpg">
+      <img src="pic5.jpg">
+    </div>
+    <div class="carousel-dots">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+    <a class="carousel-prev">&#10094;</a>
+    <a class="carousel-next">&#10095;</a>
+  </div>
+  <script>
+    const carouselSlide = document.querySelector('.carousel-slide');
+    const carouselImages = document.querySelectorAll('.carousel-slide img');
+    const carouselPrev = document.querySelector('.carousel-prev');
+    const carouselNext = document.querySelector('.carousel-next');
+    const carouselDots = document.querySelectorAll('.dot');
+
+    let counter = 0;
+    const width = carouselImages[0].clientWidth;
+
+    carouselSlide.style.transform = 'translateX(' + (-width * counter) + 'px)';
+
+    carouselNext.addEventListener('click', () => {
+      if (counter >= carouselImages.length - 1) return;
+      carouselSlide.style.transition = "transform 0.5s ease";
+      counter++;
+      carouselSlide.style.transform = 'translateX(' + (-width * counter) + 'px)';
+      setActiveDot();
+    });
+
+    carouselPrev.addEventListener('click', () => {
+      if (counter <= 0) return;
+      carouselSlide.style.transition = "transform 0.5s ease";
+      counter--;
+      carouselSlide.style.transform = 'translateX(' + (-width * counter) + 'px)';
+      setActiveDot();
+    });
+
+    carouselDots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        carouselSlide.style.transition = "transform 0.5s ease";
+        counter = index;
+        carouselSlide.style.transform = 'translateX(' + (-width * counter) + 'px)';
+        setActiveDot();
+      });
+    });
+
+    function setActiveDot() {
+      carouselDots.forEach((dot, index) => {
+        if (index === counter) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+    }
+
+  </script>
 </body>
 
 </html>
